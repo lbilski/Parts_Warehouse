@@ -36,7 +36,6 @@ public class Login extends Application {
 		springContext.stop();
 	}
 
-
 	public static void main(String[] args) {
 		launch(Login.class, args);
 	}
