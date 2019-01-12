@@ -13,5 +13,4 @@ public class LoginModel {
     public int id;
     public String login;
     public String password;
-
 }
