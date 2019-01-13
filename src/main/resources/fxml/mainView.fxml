@@ -6,9 +6,43 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.lukaszbilski.Parts.Warehouse.controllers.MainViewController">
+<AnchorPane prefHeight="399.0" prefWidth="599.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.lukaszbilski.Parts.Warehouse.controllers.MainViewController">
    <children>
-      <Label layoutX="300.0" layoutY="192.0" text="MainView" />
+      <TabPane layoutX="47.0" layoutY="14.0" prefHeight="335.0" prefWidth="416.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <tabs>
+          <Tab text="Zamówienia">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+            </content>
+          </Tab>
+          <Tab fx:id="tabCompanyBranch" text="Oddziały">
+               <content>
+                  <BorderPane prefHeight="200.0" prefWidth="200.0">
+                     <center>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <TableView fx:id="tableCompanyBranch" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <columns>
+                                    <TableColumn fx:id="Id" prefWidth="75.0" style="-fx-alignment: CENTER;" text="Id" visible="false" />
+                                  <TableColumn fx:id="city" prefWidth="75.0" style="-fx-alignment: CENTER;" text="Miasto" />
+                                  <TableColumn fx:id="loginHart" prefWidth="75.0" style="-fx-alignment: CENTER;" text="Login Hart" />
+                                    <TableColumn fx:id="branchHart" prefWidth="75.0" style="-fx-alignment: CENTER;" text="Oddział Hart" />
+                                    <TableColumn fx:id="notesHart" prefWidth="75.0" style="-fx-alignment: CENTER;" text="Notatki Hart" />
+                                    <TableColumn fx:id="loginInterCars" prefWidth="75.0" style="-fx-alignment: CENTER;" text="Login InterCars" />
+                                    <TableColumn fx:id="branchInterCars" prefWidth="75.0" style="-fx-alignment: CENTER;" text="Oddział InterCars" />
+                                    <TableColumn fx:id="notesInterCars" prefWidth="75.0" style="-fx-alignment: CENTER;" text="Notatki InterCars" />
+                                </columns>
+                                 <columnResizePolicy>
+                                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                 </columnResizePolicy>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                     </center>
+                  </BorderPane>
+               </content>
+          </Tab>
+        </tabs>
+      </TabPane>
    </children>
 </AnchorPane>

@@ -12,11 +12,11 @@ import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
-import pl.lukaszbilski.Parts.Warehouse.models.Utils;
+import pl.lukaszbilski.Parts.Warehouse.models.Service;
 import pl.lukaszbilski.Parts.Warehouse.models.repositories.LoginRepository;
 
 @Controller
-public class LoginController extends Utils {
+public class LoginController{
     @FXML
     Button loginButton;
     @FXML
@@ -44,12 +44,13 @@ public class LoginController extends Utils {
                 stageToClose.close();
                 Stage stage = new Stage();
                 stage.setScene(new Scene(root));
+                stage.setMaximized(true);
                 stage.show();
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }else{
-            infoMessage("Logowanie","Błędne hasło");
+            Service.infoMessage("Logowanie","Błędne hasło");
         }
     }
 }
