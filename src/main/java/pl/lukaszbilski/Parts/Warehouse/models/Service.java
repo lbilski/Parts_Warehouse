@@ -1,9 +1,12 @@
 package pl.lukaszbilski.Parts.Warehouse.models;
 
-import javafx.scene.control.Alert;
-import javafx.scene.control.Control;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
+import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
+import javafx.scene.control.*;
+import javafx.scene.input.Clipboard;
+import javafx.scene.input.ClipboardContent;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.text.Text;
 
 public class Service {
@@ -24,6 +27,28 @@ public class Service {
             text.wrappingWidthProperty().bind(table.widthProperty());
             text.textProperty().bind(cell.itemProperty());
             return cell;
+        });
+    }
+
+    public static void allowTableToBeCopy(TableView<?> table){
+        table.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent event) {
+                if(event.getCode() == KeyCode.C && event.isControlDown()){
+
+                    ObservableList<TablePosition> positionList = table.getSelectionModel().getSelectedCells();
+
+                    int row = positionList.get(0).getRow();
+                    int col = positionList.get(0).getColumn();
+
+                    Object cell = (Object) table.getColumns().get(col).getCellData(row);
+
+                    final Clipboard clipboard = Clipboard.getSystemClipboard();
+                    final ClipboardContent content = new ClipboardContent();
+                    content.putString(cell.toString());
+                    clipboard.setContent(content);
+                }
+            }
         });
     }
 }
