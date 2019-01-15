@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
@@ -29,6 +30,22 @@
                    </children>
                </AnchorPane>
            </center>
+         <left>
+            <VBox alignment="TOP_CENTER" BorderPane.alignment="CENTER">
+               <children>
+                  <Button fx:id="editButton" mnemonicParsing="false" onMouseClicked="#editData" prefHeight="30.0" prefWidth="75.0" text="Edytuj">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" top="25.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button fx:id="addButton" mnemonicParsing="false" onMouseClicked="#addNew" prefHeight="30.0" prefWidth="75.0" text="Dodaj">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </Button>
+               </children>
+            </VBox>
+         </left>
        </BorderPane>
    </children>
 </AnchorPane>

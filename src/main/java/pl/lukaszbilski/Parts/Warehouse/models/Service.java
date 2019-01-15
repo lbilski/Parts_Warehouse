@@ -18,6 +18,7 @@ public class Service {
         alert.showAndWait();
     }
 
+    //Wrapping text in cell
     public static void setWrapCellFactory(TableColumn<Object, String> table) {
         table.setCellFactory(tablecol -> {
             TableCell<Object, String> cell = new TableCell<>();
@@ -30,6 +31,7 @@ public class Service {
         });
     }
 
+    //allow copy selected cell
     public static void allowTableToBeCopy(TableView<?> table){
         table.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override

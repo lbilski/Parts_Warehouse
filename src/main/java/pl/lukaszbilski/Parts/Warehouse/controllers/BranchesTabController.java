@@ -3,11 +3,15 @@ package pl.lukaszbilski.Parts.Warehouse.controllers;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import pl.lukaszbilski.Parts.Warehouse.models.Service;
 import pl.lukaszbilski.Parts.Warehouse.models.models.CompanyBranchModel;
@@ -23,9 +27,14 @@ public class BranchesTabController implements Initializable{
     TableView<CompanyBranchModel> tableCompanyBranch;
     @FXML
     TableColumn<Object, String> city, loginHart, branchHart, notesHart, loginInterCars, branchInterCars, notesInterCars;
+    @FXML
+    Button editButton, addButton;
 
     @Autowired
     CompanyBranchRepository companyBranchRepository;
+
+    @Autowired
+    ApplicationContext applicationContext;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -34,8 +43,9 @@ public class BranchesTabController implements Initializable{
         Service.allowTableToBeCopy(tableCompanyBranch);
     }
 
+    //Updating list of company branches from database
     private void setListCompanyBranch(){
-        ObservableList<CompanyBranchModel> observableList = FXCollections.observableList(companyBranchRepository.findAllByOrderByCity());
+        ObservableList<CompanyBranchModel> allBranches = FXCollections.observableList(companyBranchRepository.findAllByOrderByCity());
 
         city.setCellValueFactory(new PropertyValueFactory<>("city"));
         loginHart.setCellValueFactory(new PropertyValueFactory<>("login_Hart"));
@@ -47,6 +57,30 @@ public class BranchesTabController implements Initializable{
         Service.setWrapCellFactory(notesInterCars);
         Service.setWrapCellFactory(notesHart);
 
-        tableCompanyBranch.setItems(observableList);
+        tableCompanyBranch.setItems(allBranches);
+    }
+
+    //Open new stage with option to edit branch
+    public void editData(){
+        try{
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/editBranch.fxml"));
+            fxmlLoader.setControllerFactory(applicationContext::getBean);
+            Parent root = fxmlLoader.load();
+            EditBranchController controller = fxmlLoader.getController();
+            controller.model = tableCompanyBranch.getSelectionModel().getSelectedItem();
+            controller.init();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.showAndWait();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        setListCompanyBranch();
+    }
+
+    //Add new branch or client ID
+    public void addNew(){
+        //TO-DO
+        Service.infoMessage("Auto części", "Funkcja zostanie dodana");
     }
 }

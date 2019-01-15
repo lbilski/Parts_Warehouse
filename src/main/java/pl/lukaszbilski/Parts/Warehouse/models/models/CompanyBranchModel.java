@@ -7,7 +7,7 @@ import javax.persistence.*;
 @Entity
 @Data
 @Table(name = "company_branch")
-public class CompanyBranchModel {
+public class CompanyBranchModel{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;

@@ -24,7 +24,7 @@ public class Login extends Application {
 	}
 
 	@Override
-	public void start(Stage primaryStage) throws Exception {
+	public void start(Stage primaryStage)throws Exception{
 		primaryStage.setTitle("Panel logowania");
 		Scene scene = new Scene(root);
 		primaryStage.setScene(scene);
@@ -32,7 +32,7 @@ public class Login extends Application {
 	}
 
 	@Override
-	public void stop() throws Exception {
+	public void stop() throws Exception{
 		springContext.stop();
 	}
 

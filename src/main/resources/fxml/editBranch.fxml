@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #e8e8e8;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.lukaszbilski.Parts.Warehouse.controllers.EditBranchController">
+   <center>
+      <GridPane prefHeight="420.0" prefWidth="776.0" style="-fx-background-color: #dbdbdb;" BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <AnchorPane prefHeight="492.0" prefWidth="400.0" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+               <children>
+                  <Label layoutX="63.0" layoutY="69.0" text="Login:" AnchorPane.leftAnchor="45.0" />
+                  <Label layoutX="64.0" layoutY="149.0" text="Notatki:" AnchorPane.leftAnchor="45.0" AnchorPane.rightAnchor="303.0" />
+                  <Label layoutX="63.0" layoutY="109.0" text="Oddział:" AnchorPane.leftAnchor="45.0" />
+                  <TextField fx:id="loginHart" editable="false" layoutX="171.0" layoutY="65.0" prefHeight="25.0" prefWidth="185.0" AnchorPane.rightAnchor="45.0" />
+                  <TextField fx:id="branchHart" editable="false" layoutX="171.0" layoutY="105.0" prefHeight="25.0" prefWidth="186.0" AnchorPane.rightAnchor="45.0" />
+                  <Label layoutX="186.0" layoutY="27.0" text="HART:" AnchorPane.bottomAnchor="384.0" AnchorPane.leftAnchor="171.0" AnchorPane.rightAnchor="171.0" AnchorPane.topAnchor="27.0">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <TextArea fx:id="notesHart" layoutX="63.0" layoutY="176.0" prefHeight="189.0" prefWidth="294.0" wrapText="true" AnchorPane.bottomAnchor="66.0" AnchorPane.leftAnchor="45.0" AnchorPane.rightAnchor="45.0" AnchorPane.topAnchor="176.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="492.0" prefWidth="400.0" GridPane.columnIndex="1">
+               <children>
+                  <Label layoutX="63.0" layoutY="69.0" text="Login:" AnchorPane.leftAnchor="45.0" />
+                  <Label layoutX="64.0" layoutY="149.0" text="Notatki:" AnchorPane.leftAnchor="45.0" AnchorPane.rightAnchor="303.0" />
+                  <Label layoutX="63.0" layoutY="109.0" text="Oddział:" AnchorPane.leftAnchor="45.0" />
+                  <TextField fx:id="loginInterCars" editable="false" layoutX="171.0" layoutY="65.0" prefHeight="25.0" prefWidth="185.0" AnchorPane.rightAnchor="45.0" />
+                  <TextField fx:id="branchInterCars" editable="false" layoutX="171.0" layoutY="105.0" prefHeight="25.0" prefWidth="186.0" AnchorPane.rightAnchor="45.0" />
+                  <Label layoutX="186.0" layoutY="27.0" prefHeight="20.0" prefWidth="73.0" text="InterCars:" AnchorPane.bottomAnchor="384.0" AnchorPane.leftAnchor="171.0" AnchorPane.rightAnchor="146.0" AnchorPane.topAnchor="27.0">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <TextArea fx:id="notesInterCars" layoutX="63.0" layoutY="176.0" prefHeight="189.0" prefWidth="294.0" wrapText="true" AnchorPane.bottomAnchor="66.0" AnchorPane.leftAnchor="45.0" AnchorPane.rightAnchor="45.0" AnchorPane.topAnchor="176.0" />
+               </children>
+            </AnchorPane>
+         </children>
+      </GridPane>
+   </center>
+   <bottom>
+      <Button fx:id="saveAndExit" mnemonicParsing="false" onMouseClicked="#saveAndExit" prefHeight="25.0" prefWidth="157.0" text="Zapisz i zamknij" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets bottom="50.0" top="25.0" />
+         </BorderPane.margin>
+      </Button>
+   </bottom>
+   <top>
+      <TextField fx:id="city" alignment="CENTER" editable="false" prefHeight="25.0" prefWidth="554.0" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets bottom="15.0" left="200.0" right="200.0" top="15.0" />
+         </BorderPane.margin>
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </TextField>
+   </top>
+   <left>
+      <Label text="   " BorderPane.alignment="CENTER" />
+   </left>
+   <right>
+      <Label text="   " BorderPane.alignment="CENTER" />
+   </right>
+</BorderPane>
