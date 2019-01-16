@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -39,8 +40,12 @@ public class BranchesTabController implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         setListCompanyBranch();
-        tableCompanyBranch.getSelectionModel().setCellSelectionEnabled(true);
+
         Service.allowTableToBeCopy(tableCompanyBranch);
+        Service.setWrapCellFactory(notesInterCars);
+        Service.setWrapCellFactory(notesHart);
+
+        tableCompanyBranch.getSelectionModel().setCellSelectionEnabled(true);
     }
 
     //Updating list of company branches from database
@@ -54,8 +59,6 @@ public class BranchesTabController implements Initializable{
         loginInterCars.setCellValueFactory(new PropertyValueFactory<>("login_Inter_Cars"));
         branchInterCars.setCellValueFactory(new PropertyValueFactory<>("branch_Inter_Cars"));
         notesInterCars.setCellValueFactory(new PropertyValueFactory<>("notes_Inter_Cars"));
-        Service.setWrapCellFactory(notesInterCars);
-        Service.setWrapCellFactory(notesHart);
 
         tableCompanyBranch.setItems(allBranches);
     }
@@ -71,11 +74,15 @@ public class BranchesTabController implements Initializable{
             controller.init();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.initModality(Modality.WINDOW_MODAL);
+            stage.initOwner(editButton.getScene().getWindow());
             stage.showAndWait();
+
+            initialize(new URL("file:/" + "../fxml/branchesView.fxml"),null);
         }catch (Exception e){
+            Service.infoMessage("Błąd", "Błąd w wyborze pola do edycji");
             e.printStackTrace();
         }
-        setListCompanyBranch();
     }
 
     //Add new branch or client ID

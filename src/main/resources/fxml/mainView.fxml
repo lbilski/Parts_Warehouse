@@ -14,8 +14,13 @@
                     </content>
                 </Tab>
                 <Tab fx:id="branches" text="Oddziały">
+                <content>
+                    <fx:include fx:id="branchesTab" source="branchesView.fxml" />
+                </content>
+                </Tab>
+                <Tab fx:id="prices" text="Cennik">
                     <content>
-                        <fx:include fx:id="branchesTab" source="branchesView.fxml" />
+                        <fx:include fx:id="pricesTab" source="pricesView.fxml" />
                     </content>
                 </Tab>
             </tabs>
