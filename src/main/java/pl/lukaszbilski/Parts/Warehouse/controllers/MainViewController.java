@@ -14,7 +14,7 @@ public class MainViewController implements Initializable{
     @FXML Tab branches;
     @FXML private BranchesTabController branchesTabController;
     @FXML private OrdersTabController ordersTabController;
-    @FXML private PricesViewController pricesViewController;
+    @FXML private PricesTabController pricesTabController;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
