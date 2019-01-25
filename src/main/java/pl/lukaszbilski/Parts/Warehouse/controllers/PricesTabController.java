@@ -11,6 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +39,7 @@ public class PricesTabController implements Initializable{
     MenuButton partsButton, carsButton;
 
     @FXML
-    Button addButton;
+    Button addButton, editButton;
 
     @FXML
     TableColumn<PricesModel, String> colCar, colName, colUnit, colCodeIC, colPriceIC, colCodeHart, colPriceHart, colNotes;
@@ -65,6 +66,8 @@ public class PricesTabController implements Initializable{
     }
 
     public void displayAll(){
+        carsButton.setText("Wszystkie pojazdy");
+        partsButton.setText("Wszystkie części");
         setListPrices(FXCollections.observableList(pricesRepository.findAll()));
     }
 
@@ -81,6 +84,7 @@ public class PricesTabController implements Initializable{
         colNotes.setCellValueFactory(new PropertyValueFactory<>("notes"));
 
         tablePrices.setItems(list);
+        tablePrices.getSortOrder().addAll(colCar, colName);
     }
 
     private void setCarsButtonItems(){
@@ -92,6 +96,8 @@ public class PricesTabController implements Initializable{
                         @Override
                         public void handle(ActionEvent event) {
                             setListPrices(FXCollections.observableList(pricesRepository.findAllByCar(car.getName())));
+                            carsButton.setText(car.getName());
+                            partsButton.setText("Wszystkie części");
                         }
                     })
                     .build();
@@ -108,6 +114,8 @@ public class PricesTabController implements Initializable{
                         @Override
                         public void handle(ActionEvent event) {
                             setListPrices(FXCollections.observableList(pricesRepository.findAllByName(part.getName())));
+                            partsButton.setText(part.getName());
+                            carsButton.setText("Wszystkie pojazdy");
                         }
                     })
                     .build();
@@ -120,15 +128,36 @@ public class PricesTabController implements Initializable{
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/newPriceItem.fxml"));
             fxmlLoader.setControllerFactory(applicationContext::getBean);
             Parent root = fxmlLoader.load();
-
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.initModality(Modality.WINDOW_MODAL);
             stage.initOwner(addButton.getScene().getWindow());
             stage.showAndWait();
+
+            setListPrices(FXCollections.observableList(pricesRepository.findAll()));
         }catch (IOException e){
             e.printStackTrace();
         }
+    }
 
+    public void editItem(){
+        try{
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/editPrice.fxml"));
+            fxmlLoader.setControllerFactory(applicationContext::getBean);
+            Parent root = fxmlLoader.load();
+            EditPriceController controller = fxmlLoader.getController();
+            controller.model = tablePrices.getSelectionModel().getSelectedItem();
+            controller.init();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.initModality(Modality.WINDOW_MODAL);
+            stage.initOwner(editButton.getScene().getWindow());
+            stage.showAndWait();
+
+            setListPrices(FXCollections.observableList(pricesRepository.findAll()));
+        }catch (Exception e){
+            Service.infoMessage("Błąd", "Błąd w wyborze pola do edycji");
+            e.printStackTrace();
+        }
     }
 }

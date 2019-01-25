@@ -78,7 +78,7 @@ public class BranchesTabController implements Initializable{
             stage.initOwner(editButton.getScene().getWindow());
             stage.showAndWait();
 
-            initialize(new URL("file:/" + "../fxml/branchesView.fxml"),null);
+            setListCompanyBranch();
         }catch (Exception e){
             Service.infoMessage("Błąd", "Błąd w wyborze pola do edycji");
             e.printStackTrace();
