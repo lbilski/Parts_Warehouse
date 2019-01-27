@@ -1,16 +1,114 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
+<?import com.jfoenix.controls.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="ordersTab" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="pl.lukaszbilski.Parts.Warehouse.controllers.OrdersTabController">
-   <children>
-      <Button />
-      <Button layoutX="300.0" layoutY="101.0" mnemonicParsing="false" text="Orders" />
-   </children>
+<AnchorPane prefHeight="839.0" prefWidth="1240.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.lukaszbilski.Parts.Warehouse.controllers.OrdersTabController">
+    <children>
+        <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <center>
+                <TableView fx:id="tableOrders" prefHeight="768.0" prefWidth="1213.0" style="-fx-alignment: CENTER;" BorderPane.alignment="CENTER">
+                    <columns>
+                        <TableColumn fx:id="colCity" minWidth="-1.0" prefWidth="-1.0" style="-fx-alignment: CENTER;" text="Miasto" />
+                        <TableColumn fx:id="colDateOrder" minWidth="-1.0" prefWidth="-1.0" style="-fx-alignment: CENTER;" text="Data zamówienia" />
+                        <TableColumn fx:id="colWholesale" minWidth="-1.0" prefWidth="-1.0" style="-fx-alignment: CENTER;" text="Hurtownia" />
+                        <TableColumn fx:id="colNumberOrder" minWidth="120.0" prefWidth="-1.0" style="-fx-alignment: CENTER;" text="Numer zamówienia / FV" />
+                        <TableColumn fx:id="colCar" minWidth="120.0" prefWidth="-1.0" style="-fx-alignment: CENTER;" text="Samochód" />
+                        <TableColumn fx:id="colPartName" minWidth="-1.0" prefWidth="-1.0" style="-fx-alignment: CENTER;" text="Nazwa części" />
+                        <TableColumn fx:id="colUnit" minWidth="-1.0" prefWidth="-1.0" style="-fx-alignment: CENTER;" text="Jednostka" />
+                        <TableColumn fx:id="colQuantity" minWidth="-1.0" prefWidth="-1.0" style="-fx-alignment: CENTER;" text="Ilość" />
+                        <TableColumn fx:id="colVIN" minWidth="-1.0" prefWidth="-1.0" style="-fx-alignment: CENTER;" text="ID/VIN Auta" />
+                        <TableColumn fx:id="colDateAssembly" minWidth="-1.0" prefWidth="-1.0" style="-fx-alignment: CENTER;" text="Data montażu" />
+                        <TableColumn fx:id="colNotes" minWidth="120.0" prefWidth="-1.0" style="-fx-alignment: CENTER;" text="Notatki" />
+                    </columns>
+                    <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                    </columnResizePolicy>
+                </TableView>
+            </center>
+            <top>
+                <HBox alignment="CENTER_LEFT" prefHeight="48.0" prefWidth="1150.0">
+                    <children>
+                  <HBox alignment="CENTER">
+                     <children>
+                              <Button fx:id="newOrder" mnemonicParsing="false" prefHeight="30.0" prefWidth="136.0" text="Nowe zamówienie">
+                                  <HBox.margin>
+                                      <Insets right="10.0" />
+                                  </HBox.margin>
+                              </Button>
+                              <Button fx:id="edit" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Edytuj">
+                                  <HBox.margin>
+                                      <Insets right="10.0" />
+                                  </HBox.margin>
+                              </Button>
+                        <VBox alignment="CENTER">
+                           <children>
+                              <Label contentDisplay="CENTER" text="Sortowanie">
+                                 <padding>
+                                    <Insets bottom="5.0" />
+                                 </padding>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </Label>
+                              <HBox>
+                                 <children>
+                                          <MenuButton fx:id="cityMenu" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="28.0" prefWidth="190.0" text="Wszystkie miasta">
+                                              <items>
+                                                  <MenuItem mnemonicParsing="false" onAction="#setCityMenuDefault" text="Wszystkie" />
+                                              </items>
+                                              <HBox.margin>
+                                                  <Insets left="10.0" right="10.0" />
+                                              </HBox.margin>
+                                          </MenuButton>
+                                          <MenuButton fx:id="carsMenu" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="30.0" prefWidth="245.0" text="Wszystkie pojazdy">
+                                              <items>
+                                                  <MenuItem mnemonicParsing="false" onAction="#setCarMenuDefault" text="Wszystkie" />
+                                              </items>
+                                          </MenuButton>
+                                    <MenuButton fx:id="partsMenu" alignment="CENTER" contentDisplay="CENTER" layoutX="220.0" layoutY="10.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="245.0" text="Wszystkie części">
+                                       <items>
+                                          <MenuItem mnemonicParsing="false" onAction="#setPartMenuDefault" text="Wszystkie" />
+                                       </items>
+                                       <HBox.margin>
+                                          <Insets left="10.0" />
+                                       </HBox.margin>
+                                    </MenuButton>
+                                    <MenuButton fx:id="assemblyMenu" alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="10.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="211.0" text="Wszystkie zamówienia">
+                                       <items>
+                                          <MenuItem mnemonicParsing="false" onAction="#setAssemblyMenuDefault" text="Wszystkie" />
+                                          <MenuItem fx:id="assemblyIte" mnemonicParsing="false" onAction="#setAssemblyMenuTrue" text="Zamontowane" />
+                                          <MenuItem mnemonicParsing="false" onAction="#setAssemblyMenuFalse" text="Niezamontowane" />
+                                       </items>
+                                       <HBox.margin>
+                                          <Insets left="10.0" />
+                                       </HBox.margin>
+                                    </MenuButton>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <Button fx:id="sort" layoutX="112.0" layoutY="19.0" mnemonicParsing="false" onMouseClicked="#sorting" prefHeight="30.0" prefWidth="100.0" text="Sortuj">
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+                    </children>
+                    <BorderPane.margin>
+                        <Insets />
+                    </BorderPane.margin>
+                    <padding>
+                        <Insets bottom="10.0" left="10.0" top="10.0" />
+                    </padding>
+                </HBox>
+            </top>
+        </BorderPane>
+    </children>
 </AnchorPane>

@@ -11,7 +11,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,8 +54,6 @@ public class PricesTabController implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        tablePrices.getSelectionModel().setCellSelectionEnabled(true);
-
         setPartsButtonItems();
         setCarsButtonItems();
 
@@ -135,6 +132,7 @@ public class PricesTabController implements Initializable{
             stage.showAndWait();
 
             setListPrices(FXCollections.observableList(pricesRepository.findAll()));
+            buttonToDefault();
         }catch (IOException e){
             e.printStackTrace();
         }
@@ -155,9 +153,15 @@ public class PricesTabController implements Initializable{
             stage.showAndWait();
 
             setListPrices(FXCollections.observableList(pricesRepository.findAll()));
+            buttonToDefault();
         }catch (Exception e){
             Service.infoMessage("Błąd", "Błąd w wyborze pola do edycji");
             e.printStackTrace();
         }
+    }
+
+    private void buttonToDefault(){
+        carsButton.setText("Wszystkie pojazdy");
+        partsButton.setText("Wszystkie części");
     }
 }

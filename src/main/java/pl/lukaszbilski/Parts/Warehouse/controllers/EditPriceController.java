@@ -44,7 +44,7 @@ public class EditPriceController {
         carsName.setText(model.getCar());
         codeIC.setText(model.getCode_Inter_Cars());
         priceIC.setText(model.getPrice_Inter_Cars());
-        codeHart.setText(model.getPrice_Hart());
+        codeHart.setText(model.getCode_Hart());
         priceHart.setText(model.getPrice_Hart());
         notes.setText(model.getNotes());
     }

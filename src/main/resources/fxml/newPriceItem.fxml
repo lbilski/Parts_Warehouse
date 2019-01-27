@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #e8e8e8;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.lukaszbilski.Parts.Warehouse.controllers.AddPricesController">
+   <bottom>
+      <HBox alignment="CENTER" prefHeight="108.0" prefWidth="753.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="saveAndExit" mnemonicParsing="false" onMouseClicked="#saveAndExit" text="Zapisz i zamknij" />
+            <Button fx:id="saveAndContinue" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#saveAndNext" text="Zapisz i dodaj kolejne">
+               <HBox.margin>
+                  <Insets left="20.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
+   </bottom>
+   <center>
+      <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <MenuButton fx:id="partsMenu" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="270.0" text="Nazwa części" textAlignment="CENTER">
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </MenuButton>
+            <TextField fx:id="unit" alignment="CENTER" editable="false" maxWidth="270.0" promptText="jednostka">
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </TextField>
+            <MenuButton fx:id="carsMenu" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="270.0" text="Samochód">
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </MenuButton>
+            <TextField fx:id="codeIC" alignment="CENTER" maxWidth="270.0" promptText="Kod InterCars">
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </TextField>
+            <TextField fx:id="priceIC" alignment="CENTER" maxWidth="270.0" promptText="Cena InterCars brutto">
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </TextField>
+            <TextField fx:id="codeHart" alignment="CENTER" maxWidth="270.0" promptText="Kod Hart">
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </TextField>
+            <TextField fx:id="priceHart" alignment="CENTER" maxWidth="270.0" promptText="Cena Hart brutto">
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </TextField>
+            <TextArea fx:id="notes" maxWidth="300.0" prefHeight="200.0" prefWidth="200.0" promptText="Notatki" style="-fx-alignment: CENTER;" wrapText="true">
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </TextArea>
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </VBox>
+   </center>
+   <top>
+      <VBox prefHeight="51.0" prefWidth="604.0" BorderPane.alignment="CENTER" />
+   </top>
+</BorderPane>
