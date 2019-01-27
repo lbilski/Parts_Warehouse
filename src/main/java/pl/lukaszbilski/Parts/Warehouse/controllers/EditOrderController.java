@@ -1,6 +1,5 @@
 package pl.lukaszbilski.Parts.Warehouse.controllers;
 
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
@@ -14,8 +13,6 @@ import pl.lukaszbilski.Parts.Warehouse.models.models.OrdersModel;
 import pl.lukaszbilski.Parts.Warehouse.models.repositories.OrdersRepository;
 
 import java.sql.Date;
-import java.time.LocalDate;
-
 
 @Controller
 public class EditOrderController{
