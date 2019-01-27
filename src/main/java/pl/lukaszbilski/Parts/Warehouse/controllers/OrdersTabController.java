@@ -10,6 +10,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import pl.lukaszbilski.Parts.Warehouse.models.Service;
 import pl.lukaszbilski.Parts.Warehouse.models.models.CarsModel;
 import pl.lukaszbilski.Parts.Warehouse.models.models.CompanyBranchModel;
 import pl.lukaszbilski.Parts.Warehouse.models.models.OrdersModel;
@@ -30,7 +31,7 @@ public class OrdersTabController implements Initializable{
     TableView<OrdersModel> tableOrders;
 
     @FXML
-    TableColumn<OrdersModel, String> colCity, colWholesale, colNumberOrder, colCar, colPartName, colUnit, colVIN, colNotes;
+    TableColumn<Object, String> colCity, colWholesale, colNumberOrder, colCar, colPartName, colUnit, colVIN, colNotes;
 
     @FXML
     TableColumn<OrdersModel, Integer>colQuantity;
@@ -61,6 +62,9 @@ public class OrdersTabController implements Initializable{
         setCarsMenu();
         setCityMenu();
         setPartsMenu();
+
+        Service.allowTableToBeCopy(tableOrders);
+        Service.setWrapCellFactory(colNotes);
     }
 
     private void setListOrders(ObservableList<OrdersModel> list){
