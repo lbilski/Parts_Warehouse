@@ -36,12 +36,12 @@
                     <children>
                   <HBox alignment="CENTER">
                      <children>
-                              <Button fx:id="newOrder" mnemonicParsing="false" prefHeight="30.0" prefWidth="136.0" text="Nowe zamówienie">
+                              <Button fx:id="newOrder" mnemonicParsing="false" onMouseClicked="#openNewOrder" prefHeight="30.0" prefWidth="136.0" text="Nowe zamówienie">
                                   <HBox.margin>
                                       <Insets right="10.0" />
                                   </HBox.margin>
                               </Button>
-                              <Button fx:id="edit" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Edytuj">
+                              <Button fx:id="edit" mnemonicParsing="false" onMouseClicked="#editOrder" prefHeight="30.0" prefWidth="100.0" text="Edytuj">
                                   <HBox.margin>
                                       <Insets right="10.0" />
                                   </HBox.margin>

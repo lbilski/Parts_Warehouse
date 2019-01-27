@@ -50,8 +50,8 @@ public class AddPricesController implements Initializable{
                             .onAction(new EventHandler<ActionEvent>() {
                                 @Override
                                 public void handle(ActionEvent event) {
-                                    partsMenu.setText(part.getName());
                                     unit.setText(part.getUnit());
+                                    partsMenu.setText(part.getName());
                                 }
                             })
                     .build();

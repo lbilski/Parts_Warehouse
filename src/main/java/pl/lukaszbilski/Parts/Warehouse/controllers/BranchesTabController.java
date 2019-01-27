@@ -39,7 +39,7 @@ public class BranchesTabController implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        setListCompanyBranch();
+        setListCompanyBranch(FXCollections.observableList(companyBranchRepository.findAllByOrderByCity()));
 
         Service.allowTableToBeCopy(tableCompanyBranch);
         Service.setWrapCellFactory(notesInterCars);
@@ -49,8 +49,7 @@ public class BranchesTabController implements Initializable{
     }
 
     //Updating list of company branches from database
-    private void setListCompanyBranch(){
-        ObservableList<CompanyBranchModel> allBranches = FXCollections.observableList(companyBranchRepository.findAllByOrderByCity());
+    private void setListCompanyBranch(ObservableList<CompanyBranchModel> list){
 
         city.setCellValueFactory(new PropertyValueFactory<>("city"));
         loginHart.setCellValueFactory(new PropertyValueFactory<>("login_Hart"));
@@ -60,7 +59,7 @@ public class BranchesTabController implements Initializable{
         branchInterCars.setCellValueFactory(new PropertyValueFactory<>("branch_Inter_Cars"));
         notesInterCars.setCellValueFactory(new PropertyValueFactory<>("notes_Inter_Cars"));
 
-        tableCompanyBranch.setItems(allBranches);
+        tableCompanyBranch.setItems(list);
     }
 
     //Open new stage with option to edit branch
@@ -78,11 +77,12 @@ public class BranchesTabController implements Initializable{
             stage.initOwner(editButton.getScene().getWindow());
             stage.showAndWait();
 
-            setListCompanyBranch();
         }catch (Exception e){
             Service.infoMessage("Błąd", "Błąd w wyborze pola do edycji");
             e.printStackTrace();
         }
+
+        setListCompanyBranch(FXCollections.observableList(companyBranchRepository.findAllByOrderByCity()));
     }
 
     //Add new branch or client ID

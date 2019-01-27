@@ -5,10 +5,16 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import pl.lukaszbilski.Parts.Warehouse.models.Service;
 import pl.lukaszbilski.Parts.Warehouse.models.models.CarsModel;
@@ -21,6 +27,7 @@ import pl.lukaszbilski.Parts.Warehouse.models.repositories.OrdersRepository;
 import pl.lukaszbilski.Parts.Warehouse.models.repositories.PartsRepository;
 
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
 import java.util.ResourceBundle;
@@ -40,7 +47,7 @@ public class OrdersTabController implements Initializable{
     TableColumn<OrdersModel, Date>colDateOrder, colDateAssembly;
 
     @FXML
-    Button sort;
+    Button sort, newOrder, edit;
 
     @FXML
     MenuButton cityMenu, carsMenu, assemblyMenu, partsMenu;
@@ -53,6 +60,8 @@ public class OrdersTabController implements Initializable{
     CompanyBranchRepository companyBranchRepository;
     @Autowired
     PartsRepository partsRepository;
+    @Autowired
+    ApplicationContext applicationContext;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -172,7 +181,7 @@ public class OrdersTabController implements Initializable{
     }
 
     private void setCityMenu(){
-        for(CompanyBranchModel city:companyBranchRepository.findAllByOrderByCity()) {
+        for(CompanyBranchModel city:companyBranchRepository.findAll()) {
             MenuItem newItem =
                     MenuItemBuilder.create()
                             .text(city.getCity())
@@ -184,6 +193,44 @@ public class OrdersTabController implements Initializable{
                             })
                             .build();
             cityMenu.getItems().add(newItem);
+        }
+    }
+
+    public void openNewOrder(){
+        try{
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/newOrder.fxml"));
+            fxmlLoader.setControllerFactory(applicationContext::getBean);
+            Parent root = fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.initModality(Modality.WINDOW_MODAL);
+            stage.initOwner(newOrder.getScene().getWindow());
+            stage.showAndWait();
+
+            sorting();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    public void editOrder(){
+        try{
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/editOrderView.fxml"));
+            fxmlLoader.setControllerFactory(applicationContext::getBean);
+            Parent root = fxmlLoader.load();
+            EditOrderController controller = fxmlLoader.getController();
+            controller.inputModel = tableOrders.getSelectionModel().getSelectedItem();
+            controller.init();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.initModality(Modality.WINDOW_MODAL);
+            stage.initOwner(edit.getScene().getWindow());
+            stage.showAndWait();
+
+            sorting();
+        }catch (Exception e){
+            Service.infoMessage("Błąd", "Błąd w wyborze pola do edycji");
+            e.printStackTrace();
         }
     }
 }
