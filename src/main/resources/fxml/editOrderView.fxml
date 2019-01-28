@@ -11,14 +11,14 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #e8e8e8;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.lukaszbilski.Parts.Warehouse.controllers.EditOrderController">
    <bottom>
-      <HBox alignment="CENTER" prefHeight="108.0" prefWidth="753.0" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER" prefHeight="61.0" prefWidth="800.0" BorderPane.alignment="CENTER">
          <children>
             <Button fx:id="saveAndExit" mnemonicParsing="false" onMouseClicked="#saveAndExit" text="Zapisz i zamknij" />
          </children>
       </HBox>
    </bottom>
    <center>
-      <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+      <VBox alignment="TOP_CENTER" prefHeight="483.0" prefWidth="800.0" BorderPane.alignment="CENTER">
          <children>
             <TextField fx:id="branch" alignment="CENTER" maxWidth="270.0" promptText="Oddział">
                <VBox.margin>
@@ -56,6 +56,11 @@
                </VBox.margin>
             </TextField>
             <TextField fx:id="partName" alignment="CENTER" maxWidth="270.0" promptText="Nazwa części">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </TextField>
+            <TextField fx:id="partCode" alignment="CENTER" maxWidth="270.0" promptText="Kod części">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>

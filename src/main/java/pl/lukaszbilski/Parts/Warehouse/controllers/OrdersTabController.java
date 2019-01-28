@@ -38,7 +38,7 @@ public class OrdersTabController implements Initializable{
     TableView<OrdersModel> tableOrders;
 
     @FXML
-    TableColumn<Object, String> colCity, colWholesale, colNumberOrder, colCar, colPartName, colUnit, colVIN, colNotes;
+    TableColumn<Object, String> colCity, colWholesale, colNumberOrder, colCar, colPartName, colPartCode, colUnit, colVIN, colNotes;
 
     @FXML
     TableColumn<OrdersModel, Integer>colQuantity;
@@ -83,6 +83,7 @@ public class OrdersTabController implements Initializable{
         colNumberOrder.setCellValueFactory(new PropertyValueFactory<>("number_order"));
         colCar.setCellValueFactory(new PropertyValueFactory<>("car"));
         colPartName.setCellValueFactory(new PropertyValueFactory<>("part"));
+        colPartCode.setCellValueFactory(new PropertyValueFactory<>("partCode"));
         colUnit.setCellValueFactory(new PropertyValueFactory<>("unit"));
         colQuantity.setCellValueFactory(new PropertyValueFactory<>("quantity"));
         colVIN.setCellValueFactory(new PropertyValueFactory<>("id_vin"));
@@ -165,7 +166,7 @@ public class OrdersTabController implements Initializable{
     }
 
     private void setPartsMenu(){
-        for(PartsModel part: partsRepository.findAll()){
+        for(PartsModel part: partsRepository.findAllByOrderByName()){
             MenuItem newItem =
                     MenuItemBuilder.create()
                             .text(part.getName())
@@ -181,7 +182,7 @@ public class OrdersTabController implements Initializable{
     }
 
     private void setCityMenu(){
-        for(CompanyBranchModel city:companyBranchRepository.findAll()) {
+        for(CompanyBranchModel city:companyBranchRepository.findAllByOrderByCity()) {
             MenuItem newItem =
                     MenuItemBuilder.create()
                             .text(city.getCity())

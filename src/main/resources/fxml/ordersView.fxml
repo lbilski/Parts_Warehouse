@@ -20,6 +20,7 @@
                         <TableColumn fx:id="colNumberOrder" minWidth="120.0" prefWidth="-1.0" style="-fx-alignment: CENTER;" text="Numer zamówienia / FV" />
                         <TableColumn fx:id="colCar" minWidth="120.0" prefWidth="-1.0" style="-fx-alignment: CENTER;" text="Samochód" />
                         <TableColumn fx:id="colPartName" minWidth="-1.0" prefWidth="-1.0" style="-fx-alignment: CENTER;" text="Nazwa części" />
+                  <TableColumn fx:id="colPartCode" minWidth="-1.0" prefWidth="-1.0" style="-fx-alignment: CENTER;" text="Kod części" />
                         <TableColumn fx:id="colUnit" minWidth="-1.0" prefWidth="-1.0" style="-fx-alignment: CENTER;" text="Jednostka" />
                         <TableColumn fx:id="colQuantity" minWidth="-1.0" prefWidth="-1.0" style="-fx-alignment: CENTER;" text="Ilość" />
                         <TableColumn fx:id="colVIN" minWidth="-1.0" prefWidth="-1.0" style="-fx-alignment: CENTER;" text="ID/VIN Auta" />

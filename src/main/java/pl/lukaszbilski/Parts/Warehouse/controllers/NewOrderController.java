@@ -9,6 +9,7 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import pl.lukaszbilski.Parts.Warehouse.models.Service;
 import pl.lukaszbilski.Parts.Warehouse.models.models.*;
 import pl.lukaszbilski.Parts.Warehouse.models.repositories.*;
 
@@ -29,7 +30,7 @@ public class NewOrderController implements Initializable{
     @FXML
     TextArea notes;
     @FXML
-    TextField numberOrder, quantity, unit, vin;
+    TextField numberOrder, quantity, unit, vin, partCode;
 
     @Autowired
     CompanyBranchRepository companyBranchRepository;
@@ -124,8 +125,13 @@ public class NewOrderController implements Initializable{
     }
 
     public void saveAndNext(){
+        OrdersModel modetToSend = newModel();
+        ordersRepository.save(modetToSend);
+        Service.infoMessage("Nowe zamówienie", "Zapisano dane");
+
         partsMenu.setText("Nazwa części");
         unit.setText("");
+        partCode.setText("");
     }
 
     private OrdersModel newModel(){
@@ -137,6 +143,7 @@ public class NewOrderController implements Initializable{
         model.setNumber_order(numberOrder.getText());
         model.setCar(carsMenu.getText());
         model.setPart(partsMenu.getText());
+        model.setPartCode(partCode.getText());
         model.setUnit(unit.getText());
         model.setQuantity(Integer.parseInt(quantity.getText()));
         model.setId_vin(vin.getText());

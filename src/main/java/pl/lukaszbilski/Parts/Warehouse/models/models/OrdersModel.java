@@ -19,6 +19,8 @@ public class OrdersModel {
     private String car;
     @Column(name = "part_name")
     private String part;
+    @Column(name = "part_code")
+    private String partCode;
     private String unit;
     private int quantity;
     private String id_vin;

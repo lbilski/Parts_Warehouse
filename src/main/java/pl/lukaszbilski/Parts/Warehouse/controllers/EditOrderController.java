@@ -19,7 +19,7 @@ public class EditOrderController{
     OrdersModel inputModel;
 
     @FXML
-    TextField wholesale, vin, unit, quantity, partName, numberOrder, car, branch;
+    TextField wholesale, vin, unit, quantity, partName, numberOrder, car, branch, partCode;
     @FXML
     TextArea notes;
     @FXML
@@ -37,10 +37,15 @@ public class EditOrderController{
         inputModel.setNumber_order(numberOrder.getText());
         inputModel.setCar(car.getText());
         inputModel.setPart(partName.getText());
+        inputModel.setPartCode(partCode.getText());
         inputModel.setUnit(unit.getText());
         inputModel.setQuantity(Integer.parseInt(quantity.getText()));
         inputModel.setId_vin(vin.getText());
-        inputModel.setAssembly(Date.valueOf(dateAssembly.getValue()));
+        if(dateAssembly.getValue()==null){
+            inputModel.setAssembly(null);
+        }else{
+            inputModel.setAssembly(Date.valueOf(dateAssembly.getValue()));
+        }
         inputModel.setNotes(notes.getText());
 
         ordersRepository.save(inputModel);
@@ -55,6 +60,7 @@ public class EditOrderController{
         unit.setText(inputModel.getUnit());
         quantity.setText(String.valueOf(inputModel.getQuantity()));
         partName.setText(inputModel.getPart());
+        partCode.setText(inputModel.getPartCode());
         numberOrder.setText(inputModel.getNumber_order());
         car.setText(inputModel.getCar());
         branch.setText(inputModel.getCity());

@@ -11,7 +11,7 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #e8e8e8;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.lukaszbilski.Parts.Warehouse.controllers.NewOrderController">
    <bottom>
-      <HBox alignment="CENTER" prefHeight="108.0" prefWidth="753.0" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER" prefHeight="73.0" prefWidth="800.0" BorderPane.alignment="CENTER">
          <children>
             <Button fx:id="saveAndExit" mnemonicParsing="false" onMouseClicked="#saveAndExit" text="Zapisz i zamknij" />
             <Button fx:id="saveAndContinue" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#saveAndNext" text="Zapisz i kontynuuj to samo zamówienie">
@@ -65,6 +65,11 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </MenuButton>
+            <TextField fx:id="partCode" alignment="CENTER" maxWidth="270.0" promptText="Kod części">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </TextField>
             <TextField fx:id="unit" alignment="CENTER" editable="false" maxWidth="270.0" promptText="Jednostka">
                <VBox.margin>
                   <Insets top="10.0" />
