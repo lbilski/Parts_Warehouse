@@ -115,17 +115,17 @@
             </GridPane>
          </top>
          <center>
-                <TableView fx:id="tableOrders" prefHeight="768.0" prefWidth="1244.0" BorderPane.alignment="CENTER">
+                <TableView fx:id="tableServices" prefHeight="768.0" prefWidth="1244.0" BorderPane.alignment="CENTER">
                     <columns>
-                        <TableColumn minWidth="-1.0" prefWidth="-1.0" style="-fx-alignment: CENTER;" text="Status" />
-                  <TableColumn prefWidth="75.0" text="Oddział" />
-                        <TableColumn minWidth="-1.0" prefWidth="-1.0" style="-fx-alignment: CENTER;" text="Data zgłoszenia" />
-                        <TableColumn minWidth="-1.0" prefWidth="-1.0" style="-fx-alignment: CENTER;" text="Nr rej." />
-                        <TableColumn minWidth="-1.0" prefWidth="-1.0" style="-fx-alignment: CENTER;" text="ID auta" />
-                        <TableColumn minWidth="150.0" prefWidth="-1.0" style="-fx-alignment: CENTER;" text="Lista zadań" />
-                        <TableColumn minWidth="150.0" prefWidth="-1.0" style="-fx-alignment: CENTER;" text="Co zrobiono" />
-                  <TableColumn minWidth="-1.0" prefWidth="-1.0" style="-fx-alignment: CENTER;" text="Data następnej reakcji" />
-                        <TableColumn minWidth="150.0" prefWidth="-1.0" style="-fx-alignment: CENTER;" text="Co do zrobienia" />
+                        <TableColumn fx:id="colStatus" minWidth="-1.0" prefWidth="-1.0" style="-fx-alignment: CENTER;" text="Status" />
+                  <TableColumn fx:id="colBranch" prefWidth="75.0" style="-fx-alignment: CENTER;" text="Oddział" />
+                        <TableColumn fx:id="colApplicationDate" minWidth="-1.0" prefWidth="-1.0" style="-fx-alignment: CENTER;" text="Data zgłoszenia" />
+                        <TableColumn fx:id="colLicensePlate" minWidth="-1.0" prefWidth="-1.0" style="-fx-alignment: CENTER;" text="Nr rej." />
+                        <TableColumn fx:id="colCarID" minWidth="-1.0" prefWidth="-1.0" style="-fx-alignment: CENTER;" text="ID auta" />
+                        <TableColumn fx:id="colTasks" minWidth="160.0" prefWidth="-1.0" text="Lista zadań" />
+                        <TableColumn fx:id="colFinishedTasks" minWidth="160.0" prefWidth="-1.0" style="-fx-alignment: CENTER;" text="Co zrobiono" />
+                  <TableColumn fx:id="colNextActionDate" minWidth="-1.0" prefWidth="-1.0" style="-fx-alignment: CENTER;" text="Data następnej reakcji" />
+                        <TableColumn fx:id="colNextActionTask" minWidth="160.0" prefWidth="-1.0" text="Co do zrobienia" />
                     </columns>
                <columnResizePolicy>
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
