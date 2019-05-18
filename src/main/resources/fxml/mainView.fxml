@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="399.0" prefWidth="599.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="pl.lukaszbilski.Parts.Warehouse.controllers.MainViewController">
+<AnchorPane prefHeight="399.0" prefWidth="599.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.lukaszbilski.Parts.Warehouse.controllers.MainViewController">
     <children>
         <TabPane layoutX="47.0" layoutY="14.0" prefHeight="335.0" prefWidth="416.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <tabs>
@@ -23,6 +23,11 @@
                         <fx:include fx:id="pricesTab" source="pricesView.fxml" />
                     </content>
                 </Tab>
+            <Tab fx:id="orders1" text="Serwis">
+               <content>
+                  <fx:include fx:id="serviceTab" source="serviceTabView.fxml" />
+               </content>
+            </Tab>
             </tabs>
         </TabPane>
     </children>

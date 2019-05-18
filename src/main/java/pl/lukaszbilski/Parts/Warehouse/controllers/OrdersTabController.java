@@ -148,7 +148,6 @@ public class OrdersTabController implements Initializable{
         assemblyMenu.setText("Niezamontowane");
     }
 
-
     private void setCarsMenu(){
         for(CarsModel car:carsRepository.findAllByOrderByName()){
             MenuItem newItem =
