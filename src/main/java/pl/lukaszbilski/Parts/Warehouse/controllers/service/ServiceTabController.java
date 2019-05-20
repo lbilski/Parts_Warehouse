@@ -22,6 +22,7 @@ import pl.lukaszbilski.Parts.Warehouse.models.models.ServicesModel;
 import pl.lukaszbilski.Parts.Warehouse.models.repositories.ServicesRepository;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.sql.Date;
 import java.util.ResourceBundle;
@@ -39,7 +40,7 @@ public class ServiceTabController implements Initializable {
     TableColumn<OrdersModel, Date> colApplicationDate, colNextActionDate;
 
     @FXML
-    Button newService;
+    Button newService, editService, refreshButton;
 
     @Autowired
     ServicesRepository servicesRepository;
@@ -81,6 +82,33 @@ public class ServiceTabController implements Initializable {
             stage.showAndWait();
 
         }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    public void editService(){
+        try{
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/editService.fxml"));
+            fxmlLoader.setControllerFactory(applicationContext::getBean);
+            Parent root = fxmlLoader.load();
+            EditServiceController controller = fxmlLoader.getController();
+            controller.inputModel = tableServices.getSelectionModel().getSelectedItem();
+            controller.init();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.initModality(Modality.WINDOW_MODAL);
+            stage.initOwner(editService.getScene().getWindow());
+            stage.showAndWait();
+
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    public void refresh(){
+        try {
+            this.initialize(new URL("file:/" + "../fxml/serviceTabView.fxml"), null);
+        } catch (MalformedURLException e) {
             e.printStackTrace();
         }
     }

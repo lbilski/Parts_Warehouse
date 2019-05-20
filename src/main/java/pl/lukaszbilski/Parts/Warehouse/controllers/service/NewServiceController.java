@@ -14,7 +14,6 @@ import pl.lukaszbilski.Parts.Warehouse.models.models.ServicesModel;
 import pl.lukaszbilski.Parts.Warehouse.models.repositories.CompanyBranchRepository;
 import pl.lukaszbilski.Parts.Warehouse.models.repositories.ServicesRepository;
 
-import javax.rmi.CORBA.Util;
 import java.net.URL;
 import java.sql.Date;
 import java.util.ResourceBundle;
@@ -64,12 +63,20 @@ public class NewServiceController implements Initializable {
 
         servicesModel.setStatus("Aktywne");
         servicesModel.setBranch(cityMenu.getText());
-        servicesModel.setApplicationDate(Date.valueOf(dateApplication.getValue()));
+        if(dateApplication.getValue() == null){
+            servicesModel.setApplicationDate(null);
+        }else{
+            servicesModel.setApplicationDate(Date.valueOf(dateApplication.getValue()));
+        }
         servicesModel.setLicensePlate(licensePlate.getText());
         servicesModel.setCarID(carID.getText());
         servicesModel.setTasks(allTasks.getText());
         servicesModel.setFinishedTasks(tasksDone.getText());
-        servicesModel.setDateOfNextAction(Date.valueOf(dateNextAction.getValue()));
+        if(dateNextAction.getValue() == null){
+            servicesModel.setDateOfNextAction(null);
+        }else{
+            servicesModel.setDateOfNextAction(Date.valueOf(dateNextAction.getValue()));
+        }
         servicesModel.setNextActionTask(nextActionTask.getText());
 
         try {
@@ -77,8 +84,8 @@ public class NewServiceController implements Initializable {
             Stage stageToClose = (Stage) saveAndExit.getScene().getWindow();
             stageToClose.close();
         }catch (Exception e){
+            e.printStackTrace();
             Service.infoMessage("Błąd", "Błędne wypełnione dane");
         }
-
     }
 }

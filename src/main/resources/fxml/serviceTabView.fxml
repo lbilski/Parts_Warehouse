@@ -23,7 +23,7 @@
                               <Insets right="10.0" />
                            </HBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Edycja">
+                        <Button fx:id="editService" mnemonicParsing="false" onMouseClicked="#editService" prefHeight="30.0" prefWidth="150.0" text="Edycja">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
@@ -103,10 +103,22 @@
                         <Insets bottom="5.0" top="5.0" />
                      </GridPane.margin>
                   </HBox>
+                  <HBox id="dfgfdgf" alignment="CENTER_LEFT" prefHeight="56.0" style="-fx-background-color: ededed; -fx-border-width: 2; -fx-border-color: c1c1c1;" GridPane.columnIndex="3">
+                     <children>
+                        <Button fx:id="refreshButton" mnemonicParsing="false" onMouseClicked="#refresh" prefHeight="30.0" prefWidth="150.0" text="Odśwież" />
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+                     </padding>
+                     <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" top="5.0" />
+                     </GridPane.margin>
+                  </HBox>
                </children>
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" />
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" />
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" />
                </columnConstraints>
                <rowConstraints>
