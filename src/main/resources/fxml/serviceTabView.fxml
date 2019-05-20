@@ -10,7 +10,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="839.0" prefWidth="1240.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.lukaszbilski.Parts.Warehouse.controllers.ServiceTabController">
+<AnchorPane prefHeight="839.0" prefWidth="1240.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.lukaszbilski.Parts.Warehouse.controllers.service.ServiceTabController">
     <children>
         <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
@@ -18,7 +18,7 @@
                <children>
                   <HBox alignment="CENTER_LEFT" style="-fx-background-color: ededed; -fx-border-width: 2; -fx-border-color: c1c1c1;">
                      <children>
-                        <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Nowy Serwis">
+                        <Button fx:id="newService" mnemonicParsing="false" onMouseClicked="#addNewService" prefHeight="30.0" prefWidth="150.0" text="Nowy Serwis">
                            <HBox.margin>
                               <Insets right="10.0" />
                            </HBox.margin>

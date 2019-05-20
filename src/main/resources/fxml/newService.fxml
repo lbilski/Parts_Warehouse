@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #e8e8e8;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.lukaszbilski.Parts.Warehouse.controllers.service.NewServiceController">
+   <bottom>
+      <HBox alignment="CENTER" prefHeight="73.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="saveAndExit" mnemonicParsing="false" onMouseClicked="#saveAndExit" text="Zapisz i zamknij" />
+         </children>
+      </HBox>
+   </bottom>
+   <center>
+      <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <MenuButton fx:id="cityMenu" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="270.0" text="Oddział" textAlignment="CENTER">
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin>
+            </MenuButton>
+            <HBox alignment="CENTER" prefHeight="46.0" prefWidth="774.0">
+               <children>
+                  <DatePicker fx:id="dateApplication" prefHeight="10.0" prefWidth="270.0" promptText="Data  zgłoszenia" stylesheets="@../css/custom.css">
+                     <HBox.margin>
+                        <Insets top="10.0" />
+                     </HBox.margin>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </DatePicker>
+               </children>
+               <opaqueInsets>
+                  <Insets top="5.0" />
+               </opaqueInsets>
+            </HBox>
+            <TextField fx:id="licensePlate" alignment="CENTER" maxWidth="270.0" promptText="Nr rejestracyjny">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </TextField>
+            <TextField fx:id="carID" alignment="CENTER" maxWidth="270.0" promptText="ID auta">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </TextField>
+            <HBox alignment="CENTER" prefHeight="171.0" prefWidth="800.0">
+               <children>
+                  <TextArea fx:id="allTasks" maxWidth="318.0" prefHeight="256.0" prefWidth="318.0" promptText="Wszystkie zadania do zrobienia" style="-fx-alignment: CENTER;" wrapText="true" />
+                  <TextArea fx:id="tasksDone" maxWidth="318.0" prefHeight="207.0" prefWidth="318.0" promptText="Zadania wykonane" style="-fx-alignment: CENTER;" wrapText="true">
+                     <HBox.margin>
+                        <Insets left="15.0" />
+                     </HBox.margin>
+                  </TextArea>
+               </children>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </HBox>
+            <DatePicker fx:id="dateNextAction" editable="false" prefHeight="25.0" prefWidth="270.0" promptText="Data kolejnej akcji" stylesheets="@../css/custom.css">
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </DatePicker>
+            <TextArea fx:id="nextActionTask" maxWidth="656.0" prefHeight="108.0" prefWidth="656.0" promptText="Zadanie do wykonania przy następnej akcji" style="-fx-alignment: CENTER;" wrapText="true">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </TextArea>
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </VBox>
+   </center>
+   <top>
+      <VBox prefHeight="51.0" prefWidth="604.0" BorderPane.alignment="CENTER" />
+   </top>
+</BorderPane>
