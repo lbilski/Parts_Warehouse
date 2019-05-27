@@ -49,7 +49,7 @@ public class ServiceTabController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        setListServices(FXCollections.observableList(servicesRepository.findAll()));
+        setListServices(FXCollections.observableList(servicesRepository.findAllByOrderByDateOfNextAction()));
 
         Service.setWrapCellFactory(colTasks);
         Service.setWrapCellFactory(colFinishedTasks);

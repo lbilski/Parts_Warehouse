@@ -51,7 +51,7 @@ public class EditServiceController {
             Stage stageToClose = (Stage) saveAndExit.getScene().getWindow();
             stageToClose.close();
         }catch (Exception e){
-            Service.infoMessage("Błąd", "Błędne wypełnione dane");
+            Service.infoMessage("Błąd", "Błędnie wypełnione dane");
         }
     }
 
