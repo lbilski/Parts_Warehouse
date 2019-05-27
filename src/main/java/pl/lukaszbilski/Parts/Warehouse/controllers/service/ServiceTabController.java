@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -42,6 +43,9 @@ public class ServiceTabController implements Initializable {
     @FXML
     Button newService, editService, refreshButton;
 
+    @FXML
+    TextField carIDOrLicensePlate;
+
     @Autowired
     ServicesRepository servicesRepository;
     @Autowired
@@ -51,6 +55,7 @@ public class ServiceTabController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         setListServices(FXCollections.observableList(servicesRepository.findAllByOrderByDateOfNextAction()));
 
+        Service.allowTableToBeCopy(tableServices);
         Service.setWrapCellFactory(colTasks);
         Service.setWrapCellFactory(colFinishedTasks);
         Service.setWrapCellFactory(colNextActionTask);
@@ -103,6 +108,10 @@ public class ServiceTabController implements Initializable {
         }catch (IOException e){
             e.printStackTrace();
         }
+    }
+
+    public void searchByIDOrPlatesNumber(){
+        setListServices(FXCollections.observableList(servicesRepository.findAllByCarIDContainingOrLicensePlateContainingOrderByDateOfNextAction(carIDOrLicensePlate.getText(), carIDOrLicensePlate.getText())));
     }
 
     public void refresh(){

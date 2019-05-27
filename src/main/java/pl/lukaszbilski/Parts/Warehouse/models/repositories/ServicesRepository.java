@@ -8,4 +8,5 @@ import java.util.List;
 
 public interface ServicesRepository extends CrudRepository<ServicesModel, Integer> {
     List<ServicesModel> findAllByOrderByDateOfNextAction();
+    List<ServicesModel> findAllByCarIDContainingOrLicensePlateContainingOrderByDateOfNextAction(String carID, String licensePlate);
 }
