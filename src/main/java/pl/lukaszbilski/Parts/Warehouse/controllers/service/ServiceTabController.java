@@ -53,7 +53,7 @@ public class ServiceTabController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        setListServices(FXCollections.observableList(servicesRepository.findAllByOrderByDateOfNextAction()));
+        setListServices(FXCollections.observableList(servicesRepository.findAllByStatusOrderByDateOfNextAction("Aktywne")));
 
         Service.allowTableToBeCopy(tableServices);
         Service.setWrapCellFactory(colTasks);
