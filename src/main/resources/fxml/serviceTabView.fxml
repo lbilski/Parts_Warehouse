@@ -58,10 +58,6 @@
                                        </HBox.margin>
                                     </MenuButton>
                                     <MenuButton fx:id="cityMenu" minWidth="180.0" mnemonicParsing="false" text="Wszystkie miasta">
-                                       <items>
-                                          <MenuItem mnemonicParsing="false" text="Action 1" />
-                                          <MenuItem mnemonicParsing="false" text="Action 2" />
-                                       </items>
                                        <HBox.margin>
                                           <Insets right="10.0" />
                                        </HBox.margin>

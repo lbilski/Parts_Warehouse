@@ -2,6 +2,8 @@ package pl.lukaszbilski.Parts.Warehouse.controllers.service;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -15,8 +17,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import pl.lukaszbilski.Parts.Warehouse.models.Service;
+import pl.lukaszbilski.Parts.Warehouse.models.models.CompanyBranchModel;
 import pl.lukaszbilski.Parts.Warehouse.models.models.OrdersModel;
 import pl.lukaszbilski.Parts.Warehouse.models.models.ServicesModel;
+import pl.lukaszbilski.Parts.Warehouse.models.repositories.CompanyBranchRepository;
 import pl.lukaszbilski.Parts.Warehouse.models.repositories.ServicesRepository;
 
 import java.io.IOException;
@@ -50,11 +54,17 @@ public class ServiceTabController implements Initializable {
     ServicesRepository servicesRepository;
     @Autowired
     ApplicationContext applicationContext;
+    @Autowired
+    CompanyBranchRepository companyBranchRepository;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
         setListServices(FXCollections.observableList(servicesRepository.findAllByStatusOrderByDateOfNextAction("Aktywne")));
+        statusMenu.setText("Aktywne");
+
+        if(cityMenu.getItems().isEmpty()){
+            setCityMenu();
+        }
 
         Service.allowTableToBeCopy(tableServices);
         Service.setWrapCellFactory(colTasks);
@@ -125,6 +135,22 @@ public class ServiceTabController implements Initializable {
 
     public void setStatusMenuAll() {
         statusMenu.setText("Wszystkie");
+    }
+
+    private void setCityMenu(){
+        for(CompanyBranchModel city:companyBranchRepository.findAllByOrderByCity()) {
+            MenuItem newItem =
+                    MenuItemBuilder.create()
+                            .text(city.getCity())
+                            .onAction(new EventHandler<ActionEvent>() {
+                                @Override
+                                public void handle(ActionEvent event) {
+                                    cityMenu.setText(city.getCity());
+                                }
+                            })
+                            .build();
+            cityMenu.getItems().add(newItem);
+        }
     }
 
     public void refresh(){
