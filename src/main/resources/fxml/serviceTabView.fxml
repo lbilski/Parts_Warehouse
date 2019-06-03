@@ -47,16 +47,17 @@
                               </Label>
                               <HBox>
                                  <children>
-                                    <MenuButton mnemonicParsing="false" text="Aktywne / Zakończone">
+                                    <MenuButton fx:id="statusMenu" minWidth="120.0" mnemonicParsing="false" text="Wszystkie">
                                        <items>
-                                          <MenuItem mnemonicParsing="false" text="Aktywne" />
-                                          <MenuItem mnemonicParsing="false" text="Zakończone" />
+                                          <MenuItem mnemonicParsing="false" onAction="#setStatusMenuActive" text="Aktywne" />
+                                          <MenuItem mnemonicParsing="false" onAction="#setStatusMenuCompleted" text="Zakończone" />
+                                          <MenuItem mnemonicParsing="false" onAction="#setStatusMenuAll" text="Wszystkie" />
                                        </items>
                                        <HBox.margin>
                                           <Insets right="5.0" />
                                        </HBox.margin>
                                     </MenuButton>
-                                    <MenuButton mnemonicParsing="false" text="Wszystkie miasta">
+                                    <MenuButton fx:id="cityMenu" minWidth="180.0" mnemonicParsing="false" text="Wszystkie miasta">
                                        <items>
                                           <MenuItem mnemonicParsing="false" text="Action 1" />
                                           <MenuItem mnemonicParsing="false" text="Action 2" />

@@ -7,10 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -46,6 +43,9 @@ public class ServiceTabController implements Initializable {
     @FXML
     TextField carIDOrLicensePlate;
 
+    @FXML
+    MenuButton statusMenu, cityMenu;
+
     @Autowired
     ServicesRepository servicesRepository;
     @Autowired
@@ -53,6 +53,7 @@ public class ServiceTabController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
         setListServices(FXCollections.observableList(servicesRepository.findAllByStatusOrderByDateOfNextAction("Aktywne")));
 
         Service.allowTableToBeCopy(tableServices);
@@ -112,6 +113,18 @@ public class ServiceTabController implements Initializable {
 
     public void searchByIDOrPlatesNumber(){
         setListServices(FXCollections.observableList(servicesRepository.findAllByCarIDContainingOrLicensePlateContainingOrderByDateOfNextAction(carIDOrLicensePlate.getText(), carIDOrLicensePlate.getText())));
+    }
+
+    public void setStatusMenuActive(){
+        statusMenu.setText("Aktywne");
+    }
+
+    public void setStatusMenuCompleted (){
+        statusMenu.setText("Zakończone");
+    }
+
+    public void setStatusMenuAll() {
+        statusMenu.setText("Wszystkie");
     }
 
     public void refresh(){
