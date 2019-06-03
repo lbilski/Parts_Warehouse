@@ -62,7 +62,7 @@ public class ServiceTabController implements Initializable {
         setListServices(FXCollections.observableList(servicesRepository.findAllByStatusOrderByDateOfNextAction("Aktywne")));
         statusMenu.setText("Aktywne");
 
-        if(cityMenu.getItems().isEmpty()){
+        if(cityMenu.getItems().size() <= 1){
             setCityMenu();
         }
 
@@ -151,6 +151,29 @@ public class ServiceTabController implements Initializable {
                             .build();
             cityMenu.getItems().add(newItem);
         }
+    }
+
+    public void setCityMenuDefault() {
+        cityMenu.setText("Wszystkie miasta");
+    }
+
+    public void sort() {
+        String status;
+        String branch;
+
+        if(!statusMenu.getText().equals("Wszystkie")){
+            status = statusMenu.getText();
+        }else {
+            status = "%";
+        }
+
+        if(!cityMenu.getText().equals("Wszystkie miasta")){
+            branch = cityMenu.getText();
+        }else {
+            branch = "%";
+        }
+
+        setListServices(FXCollections.observableList(servicesRepository.findAllByStatusLikeAndBranchLikeOrderByDateOfNextAction(status, branch)));
     }
 
     public void refresh(){
