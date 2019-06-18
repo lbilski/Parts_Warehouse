@@ -1,4 +1,4 @@
-package pl.lukaszbilski.Parts.Warehouse.controllers;
+package pl.lukaszbilski.Parts.Warehouse.controllers.branches;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;

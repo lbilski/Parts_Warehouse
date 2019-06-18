@@ -98,7 +98,6 @@ public class OrdersTabController implements Initializable{
         String car;
         String part;
 
-
         if(cityMenu.getText().equals("Wszystkie miasta")){
             city = "%";
         }else{

@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Tab;
 import org.springframework.stereotype.Controller;
+import pl.lukaszbilski.Parts.Warehouse.controllers.branches.BranchesTabController;
 import pl.lukaszbilski.Parts.Warehouse.controllers.service.ServiceTabController;
 
 import java.net.MalformedURLException;

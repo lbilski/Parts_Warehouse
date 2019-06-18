@@ -1,4 +1,4 @@
-package pl.lukaszbilski.Parts.Warehouse.controllers;
+package pl.lukaszbilski.Parts.Warehouse.controllers.branches;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -87,7 +87,18 @@ public class BranchesTabController implements Initializable{
 
     //Add new branch or client ID
     public void addNew(){
-        //TO-DO
-        Service.infoMessage("Auto części", "Funkcja zostanie dodana");
+        try{
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/addNewBranch.fxml"));
+            fxmlLoader.setControllerFactory(applicationContext::getBean);
+            Parent root = fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.initModality(Modality.WINDOW_MODAL);
+            stage.initOwner(addButton.getScene().getWindow());
+            stage.showAndWait();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+
     }
 }
